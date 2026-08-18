@@ -43,6 +43,10 @@
       fill("metric-table", BM.renderMetricTable());
       fill("scenario-grid", BM.renderScenarios());
     }
+    if (page === "scenario") {
+      var pack = typeof window !== "undefined" ? window.SitroomScenario : null;
+      if (pack && pack.renderPack) fill("scenario-pack", pack.renderPack());
+    }
   }
 
   var api = { init: init, fileHint: fileHint };

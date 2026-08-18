@@ -17,7 +17,8 @@
   var NAV_TARGETS = [
     { id: "home", href: "index.html", label: "Accueil" },
     { id: "research", href: "research.html", label: "Recherche" },
-    { id: "protocol", href: "protocol.html", label: "Protocole" }
+    { id: "protocol", href: "protocol.html", label: "Protocole" },
+    { id: "scenario", href: "scenario.html", label: "Scénario" }
   ];
 
   var CONSTRUCTS = [

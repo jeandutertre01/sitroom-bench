@@ -7,7 +7,7 @@ var BM = require(path.join(__dirname, "..", "js", "content.js"));
 function run() {
   var nav = BM.getNavTargets();
   var navIds = nav.map(function (t) { return t.id; });
-  assert.deepStrictEqual(navIds, ["home", "research", "protocol"]);
+  assert.deepStrictEqual(navIds, ["home", "research", "protocol", "scenario"]);
   nav.forEach(function (t) {
     assert.ok(t.href && t.label, "nav item needs href and label");
     assert.ok(/\.html$/.test(t.href), "nav href is a page");
@@ -18,6 +18,7 @@ function run() {
   assert.ok(htmlNav.indexOf("is-active") !== -1);
   assert.ok(htmlNav.indexOf("research.html") !== -1);
   assert.ok(htmlNav.indexOf("protocol.html") !== -1);
+  assert.ok(htmlNav.indexOf("scenario.html") !== -1);
 
   var constructs = BM.buildConstructRows();
   assert.strictEqual(constructs.length, 3);

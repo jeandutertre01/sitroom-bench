@@ -19,6 +19,7 @@ Vercel serves the `site/` folder (`vercel.json` copies it to `public/` on build)
 | [site/index.html](site/index.html) | Pitch + three constructs |
 | [site/research.html](site/research.html) | Audited findings (Chen Civ V, nuke paper, field map) |
 | [site/protocol.html](site/protocol.html) | Conditions A / B / C, metrics, four scenarios |
+| [site/scenario.html](site/scenario.html) | Written strait pack: state, actions, actor-C rule, two skins |
 
 Research notes (French): [docs/MEMO](docs/MEMO-apprentissages-evals-situation-room.md) · [docs/AUDIT](docs/AUDIT-faits-memo.md) · [recommendation: submit A+B, not C](docs/RECOMMANDATION-meilleur-bench.md)
 
