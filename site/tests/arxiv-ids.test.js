@@ -8,15 +8,14 @@ var root = path.join(__dirname, "..", "..");
 var rec = fs.readFileSync(path.join(root, "docs", "RECOMMANDATION-meilleur-bench.md"), "utf8");
 var memo = fs.readFileSync(path.join(root, "docs", "MEMO-apprentissages-evals-situation-room.md"), "utf8");
 
-function warAgentCite(text) {
-  var i = text.indexOf("WarAgent");
-  assert.ok(i !== -1, "WarAgent must be named");
-  var window = text.slice(Math.max(0, i - 80), i + 180);
-  assert.ok(/2311\.17227/.test(window), "WarAgent must cite arXiv:2311.17227; window=" + window);
+function warAgentCite(text, label) {
+  assert.ok(text.indexOf("WarAgent") !== -1, label + ": WarAgent must be named");
+  var cite = /WarAgent[\s\S]{0,220}?2311\.17227/;
+  assert.ok(cite.test(text), label + ": WarAgent must be cited as arXiv:2311.17227");
 }
 
-warAgentCite(rec);
-warAgentCite(memo);
+warAgentCite(rec, "recommendation");
+warAgentCite(memo, "memo");
 
 // Wrong ID may appear only as a correction (AgentGroupChat / "à tort")
 [rec, memo].forEach(function (text, idx) {
