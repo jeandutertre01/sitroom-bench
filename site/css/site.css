@@ -1,0 +1,179 @@
+:root {
+  --ink: #14120e;
+  --paper: #f3ecdc;
+  --paper-2: #e7dcc4;
+  --rule: #2a261e;
+  --muted: #6a6254;
+  --rust: #b85a2a;
+  --rust-2: #8c3f1c;
+  --card: #fffaf0;
+  --max: 72rem;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: "IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+a { color: var(--rust-2); }
+a:hover { color: var(--rust); }
+
+.skip {
+  position: absolute;
+  left: -999px;
+}
+.skip:focus { left: 1rem; top: 1rem; background: #fff; padding: 0.4rem; }
+
+.mast {
+  border-bottom: 1px solid var(--rule);
+  background: var(--ink);
+  color: var(--paper);
+}
+.mast-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.mark {
+  font-family: "Newsreader", "Iowan Old Style", Palatino, Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--paper);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.mark span { color: var(--rust); }
+
+#site-nav { display: flex; gap: 1.25rem; }
+.nav-link {
+  color: var(--paper-2);
+  text-decoration: none;
+  font-size: 0.92rem;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 0.1rem;
+}
+.nav-link:hover,
+.nav-link.is-active {
+  color: #fff;
+  border-bottom-color: var(--rust);
+}
+
+#file-hint {
+  background: #3d2a12;
+  color: var(--paper);
+  padding: 0.55rem 1.25rem;
+  font-size: 0.88rem;
+}
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+
+.hero h1,
+h1, h2, h3 {
+  font-family: "Newsreader", "Iowan Old Style", Palatino, Georgia, serif;
+  font-weight: 560;
+  letter-spacing: -0.015em;
+  line-height: 1.18;
+}
+.hero {
+  padding: 1rem 0 2rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 2rem;
+}
+.kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  color: var(--rust);
+  margin: 0 0 0.6rem;
+}
+.hero h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); margin: 0 0 0.8rem; max-width: 18ch; }
+.lede { font-size: 1.2rem; max-width: 46rem; }
+.meta { color: var(--muted); font-size: 0.92rem; }
+
+.grid-3, .grid-2, .stats, .scenario-grid {
+  display: grid;
+  gap: 1rem;
+}
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); }
+.stats { grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); margin: 1.25rem 0 2rem; }
+
+.card, .finding {
+  background: var(--card);
+  border: 1px solid #d9cdae;
+  padding: 1.1rem 1.15rem 1.2rem;
+}
+.card h3, .finding h3 { margin: 0.15rem 0 0.5rem; font-size: 1.25rem; }
+.muted { color: var(--muted); font-size: 0.92rem; }
+
+.stat {
+  border-top: 2px solid var(--ink);
+  padding-top: 0.4rem;
+}
+.stat-value { display: block; font-family: "Newsreader", Georgia, serif; font-size: 1.45rem; }
+.stat-label { display: block; color: var(--muted); font-size: 0.8rem; }
+
+.sheet {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  background: var(--card);
+  margin: 0.5rem 0 2rem;
+}
+.sheet th, .sheet td {
+  border-bottom: 1px solid #d9cdae;
+  text-align: left;
+  padding: 0.65rem 0.7rem;
+  vertical-align: top;
+}
+.sheet thead th {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.4rem; }
+.btn {
+  display: inline-block;
+  padding: 0.55rem 0.95rem;
+  border: 1px solid var(--ink);
+  text-decoration: none;
+  color: var(--ink);
+  background: transparent;
+}
+.btn.primary { background: var(--ink); color: var(--paper); }
+
+section { margin: 2.2rem 0; }
+section > h2 { font-size: 1.7rem; margin-bottom: 0.7rem; }
+
+.note {
+  border-left: 3px solid var(--rust);
+  padding: 0.2rem 0 0.2rem 1rem;
+  max-width: 46rem;
+}
+
+footer {
+  border-top: 1px solid var(--rule);
+  padding: 1.4rem 1.25rem 2.4rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+footer .wrap { padding: 0; }
+
+@media (max-width: 640px) {
+  .hero h1 { max-width: none; }
+  .sheet { display: block; overflow-x: auto; }
+}

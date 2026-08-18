@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recherche — Blank Map</title>
+  <link rel="stylesheet" href="css/site.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet" />
+</head>
+<body data-page="research">
+  <a class="skip" href="#main">Aller au contenu</a>
+  <header class="mast">
+    <div class="mast-inner">
+      <a class="mark" href="index.html">Blank <span>Map</span></a>
+      <nav id="site-nav" aria-label="Principal"></nav>
+    </div>
+  </header>
+  <div id="file-hint" hidden>Ouvert en <code>file://</code>. Pour un serveur local : <code>python3 -m http.server</code> dans <code>site/</code>.</div>
+
+  <main id="main" class="wrap">
+    <header class="hero">
+      <p class="kicker">Ce que nous avons appris</p>
+      <h1>Recherche auditée, pas le packaging du podcast.</h1>
+      <p class="lede">Synthèse de l’épisode ChinaTalk (11 août 2026), des papers de John Chen, et de l’appel 25 k$. Chaque chiffre ci-dessous a été recoupé. Les overclaims du premier jet ont été retirés.</p>
+      <p class="meta">Concours : deadline 1er septembre 2026 · juges annoncés Chen, Wilkinson, Tony Stark, Jordan Schneider — and more to come.</p>
+    </header>
+
+    <section aria-labelledby="learnings">
+      <h2 id="learnings">Trois apprentissages qui tiennent</h2>
+      <div id="finding-list"></div>
+    </section>
+
+    <section aria-labelledby="civ">
+      <h2 id="civ">CivBench (Chen) — Civilization V, pas VI</h2>
+      <p>L’LLM est le stratège ; Vox Populi joue le tactique. 34 flavors, 8 joueurs, centaines de tours. Ce n’est pas le CivBench de Liam Wilkinson (Civ VI).</p>
+      <div id="civ-stats" class="stats"></div>
+      <p class="note">Aucun stratège ne bat VPAI de façon consistante au global. MiniMax (diplomatique) et Kimi (domination) le dépassent sur un type de victoire. Chen : ne pas déployer ce type d’agent en décision réelle.</p>
+    </section>
+
+    <section aria-labelledby="nuke">
+      <h2 id="nuke">« Nuke-happy » : le paper, pas le titre</h2>
+      <p>1 200 trajectoires → 130 épisodes déjà à haute tension. On mesure un flavor 0–100, pas un tir. 13 modèles × 8 conditions × 3 reps → 40 204 rows.</p>
+      <div id="nuke-table"></div>
+    </section>
+
+    <section aria-labelledby="field">
+      <h2 id="field">Le champ, sans fausse équivalence</h2>
+      <p>ChinaTalk ne crée pas le champ (WarAgent, CFPD, Diplomacy existent). Il le finance et le recadre. PresidentBench est un prototype décrit à l’antenne — pas un bench publié, aucun N.</p>
+      <div id="field-table"></div>
+    </section>
+
+    <p class="cta-row">
+      <a class="btn primary" href="protocol.html">Le protocole que ça justifie</a>
+      <a class="btn" href="index.html">Accueil</a>
+    </p>
+  </main>
+
+  <footer>
+    <div class="wrap">Sources : Chen et al. CivBench arXiv:2604.07733 ; To Nuke or Not to Nuke arXiv:2606.08310. Jacquelyn Schneider (Hoover) ≠ Jordan Schneider (ChinaTalk).</div>
+  </footer>
+  <script src="js/content.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>
