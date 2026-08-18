@@ -12,6 +12,8 @@ Microsite (open `site/index.html` or serve `site/`):
 cd site && python3 -m http.server
 ```
 
+Vercel serves the `site/` folder (`vercel.json` copies it to `public/` on build). Root Directory stays the repo root.
+
 | Page | What it is |
 |---|---|
 | [site/index.html](site/index.html) | Pitch + three constructs |
