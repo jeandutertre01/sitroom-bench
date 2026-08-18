@@ -18,7 +18,7 @@ cd site && python3 -m http.server
 | [site/research.html](site/research.html) | Audited findings (Chen Civ V, nuke paper, field map) |
 | [site/protocol.html](site/protocol.html) | Conditions A / B / C, metrics, four scenarios |
 
-Research notes (French): [docs/MEMO](docs/MEMO-apprentissages-evals-situation-room.md) · [docs/AUDIT](docs/AUDIT-faits-memo.md)
+Research notes (French): [docs/MEMO](docs/MEMO-apprentissages-evals-situation-room.md) · [docs/AUDIT](docs/AUDIT-faits-memo.md) · [recommendation: submit A+B, not C](docs/RECOMMANDATION-meilleur-bench.md)
 
 Prepared for ChinaTalk’s [Evals for the Situation Room](https://www.chinatalk.media/p/25k-contest-evals-for-the-situation) contest (due 1 Sept 2026).
 

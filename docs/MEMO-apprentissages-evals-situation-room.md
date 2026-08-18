@@ -459,7 +459,7 @@ ChinaTalk ne « kickstart » pas le champ (WarAgent, CFPD, Lamparth, Diplomacy e
 - Andon Labs, Vending-Bench (Opus 4.6) ; Andon FM
 - GoodStartLabs, AI Diplomacy
 - CSIS Futures Lab, CFPD-Benchmark, arXiv:2503.06263
-- WarAgent (Rutgers / Michigan), arXiv:2403.13433
+- WarAgent (Hua, Fan et al., Rutgers / Michigan), arXiv:2311.17227 — la page concours ChinaTalk lie à tort arXiv:2403.13433 (AgentGroupChat)
 - Lamparth, Corso, Ganz, Mastro, **Jacquelyn** Schneider, Trinkunas, *Human vs. Machine* (AIES 2024 ; arXiv:2403.03407) — ce Schneider n’est pas Jordan
 - Rivera et al. 2024, escalade géopolitique des LLM, arXiv:2401.03408 (Jacquelyn Schneider et Lamparth aussi coauteurs)
 - Liam Wilkinson, [CivBench (Civ VI)](https://www.lwilko.com/blog/i-gave-an-ai-a-civilization)
