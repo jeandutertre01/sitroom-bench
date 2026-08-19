@@ -9,64 +9,67 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet" />
 </head>
 <body data-page="research">
-  <a class="skip" href="#main">Aller au contenu</a>
+  <a class="skip" href="#main" data-i18n="skip">Aller au contenu</a>
   <header class="mast">
     <div class="mast-inner">
-      <a class="mark" href="index.html">sitroom <span>bench</span></a>
+      <div class="mast-brand">
+        <a class="mark" href="index.html">sitroom <span>bench</span></a>
+        <div id="lang-switch"></div>
+      </div>
       <nav id="site-nav" aria-label="Principal"></nav>
     </div>
   </header>
-  <div id="file-hint" hidden>Ouvert en <code>file://</code>. Serveur local : <code>python3 -m http.server</code> dans <code>site/</code>.</div>
+  <div id="file-hint" hidden></div>
 
   <main id="main" class="wrap">
     <header class="hero">
-      <p class="kicker">Ce que nous avons appris</p>
-      <h1>Recherche auditée, pas le packaging du podcast.</h1>
-      <p class="lede">Synthèse de l’épisode ChinaTalk (11 août 2026), des papers de John Chen, et de l’appel 25 k$. Chaque chiffre ci-dessous a été recoupé. Les overclaims du premier jet ont été retirés.</p>
-      <p class="meta">Concours : deadline 1er septembre 2026 · juges annoncés Chen, Wilkinson, Tony Stark, Jordan Schneider — and more to come.</p>
+      <p class="kicker" data-i18n="research.kicker">Faits recoupés</p>
+      <h1 data-i18n="research.title">Ce que les papers montrent — pas le titre du podcast.</h1>
+      <p class="lede" data-i18n="research.lede">ChinaTalk, les papers de John Chen, l’appel à 25 k$. Chaque chiffre a une source. Les overclaims ont été retirés.</p>
+      <p class="meta" data-i18n="research.meta">Deadline 1er septembre 2026. Juges : Chen, Wilkinson, Tony Stark, Jordan Schneider — and more to come.</p>
     </header>
 
     <div id="recommendation"></div>
 
     <section aria-labelledby="learnings">
-      <h2 id="learnings">Trois apprentissages qui tiennent</h2>
+      <h2 id="learnings" data-i18n="research.findings">Trois faits qui tiennent</h2>
       <div id="finding-list"></div>
     </section>
 
     <section aria-labelledby="civ">
-      <h2 id="civ">CivBench (Chen) — Civilization V, pas VI</h2>
-      <p>L’LLM est le stratège ; Vox Populi joue le tactique. 34 flavors, 8 joueurs, centaines de tours. Ce n’est pas le CivBench de Liam Wilkinson (Civ VI).</p>
+      <h2 id="civ" data-i18n="research.civTitle">CivBench (Chen) = Civilization V, pas VI</h2>
+      <p data-i18n="research.civLead">Le modèle décide la stratégie ; le jeu joue la tactique. Ce n’est pas le CivBench de Wilkinson (Civ VI).</p>
       <div id="civ-stats" class="stats"></div>
-      <p class="note">Aucun stratège ne bat VPAI de façon consistante au global. MiniMax (diplomatique) et Kimi (domination) le dépassent sur un type de victoire. Chen : ne pas déployer ce type d’agent en décision réelle.</p>
+      <p class="note" data-i18n="research.civNote">Aucun modèle ne bat l’IA du jeu de façon régulière. MiniMax et Kimi gagnent sur un type de victoire. Chen : ne pas déployer ça en vrai.</p>
     </section>
 
     <section aria-labelledby="nuke">
-      <h2 id="nuke">« Nuke-happy » : le paper, pas le titre</h2>
-      <p>1 200 trajectoires → 130 épisodes déjà à haute tension. On mesure un flavor 0–100, pas un tir. 13 modèles × 8 conditions × 3 reps → 40 204 rows.</p>
+      <h2 id="nuke" data-i18n="research.nukeTitle">« Nuke-happy » : le paper, pas le titre</h2>
+      <p data-i18n="research.nukeLead">1 200 parties → 130 moments déjà tendus. On mesure un curseur 0–100, pas un tir. 13 modèles × 8 conditions × 3 essais.</p>
       <div id="nuke-table"></div>
     </section>
 
     <section aria-labelledby="field-h">
-      <h2 id="field-h">Pourquoi on ne resoumet pas le champ</h2>
+      <h2 id="field-h" data-i18n="research.fieldTitle">Pourquoi on ne resoumet pas le champ</h2>
       <div id="field-comparison"></div>
     </section>
 
     <section aria-labelledby="field">
-      <h2 id="field">Le champ, sans fausse équivalence</h2>
-      <p>ChinaTalk ne crée pas le champ (WarAgent, CFPD, Diplomacy existent). Il le finance et le recadre. PresidentBench est un prototype décrit à l’antenne — pas un bench publié, aucun N.</p>
+      <h2 id="field" data-i18n="research.mapTitle">Carte du champ</h2>
+      <p data-i18n="research.mapLead">ChinaTalk finance un champ qui existe déjà (WarAgent, CFPD, Diplomacy). PresidentBench n’est pas un bench publié — aucun N.</p>
       <div id="field-table"></div>
     </section>
 
     <p class="cta-row">
-      <a class="btn primary" href="protocol.html">Le protocole que ça justifie</a>
-      <a class="btn" href="index.html">Accueil</a>
+      <a class="btn primary" href="protocol.html" data-i18n="research.ctaProtocol">Le protocole</a>
+      <a class="btn" href="index.html" data-i18n="research.ctaHome">Accueil</a>
     </p>
   </main>
 
   <footer>
     <div class="wrap">
-      <span>sitroom-bench · A+B · C en annexe</span>
-      <span>Jacquelyn Schneider (Hoover) ≠ Jordan Schneider. CivBench Chen = Civ V.</span>
+      <span data-i18n="footer.left">sitroom-bench · on soumet A+B · C reste en annexe</span>
+      <span data-i18n="footer.right">PresidentBench n’est pas publié. Jacquelyn Schneider ≠ Jordan Schneider.</span>
     </div>
   </footer>
   <script src="js/content.js"></script>

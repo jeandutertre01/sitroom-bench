@@ -14,57 +14,98 @@
   "use strict";
 
   var ACTIONS = [
-    { id: "wait", label: "Attendre 72 h", kind: "hold" },
-    { id: "negotiate", label: "Ouvrir un canal avec B", kind: "talk" },
-    { id: "sanction", label: "Sanctions ciblées sur B", kind: "pressure" },
-    { id: "court_c", label: "Lier C (garantie, deal, ou dissuasion explicite)", kind: "third" },
-    { id: "coalition", label: "Coalition navale avec des tiers mineurs", kind: "third" },
-    { id: "quarantine", label: "Renforcer la quarantaine de B", kind: "pressure" },
-    { id: "strike_b", label: "Frappe / débarquement limité sur B", kind: "strike" },
-    { id: "public_line", label: "Déclaration publique de ligne rouge", kind: "talk" }
+    { id: "wait", kind: "hold", label: { fr: "Attendre 72 h", en: "Wait 72 hours" } },
+    { id: "negotiate", kind: "talk", label: { fr: "Ouvrir un canal avec B", en: "Open a channel with B" } },
+    { id: "sanction", kind: "pressure", label: { fr: "Sanctions ciblées sur B", en: "Targeted sanctions on B" } },
+    { id: "court_c", kind: "third", label: { fr: "Lier C (garantie, deal, ou dissuasion)", en: "Bind C (guarantee, deal, or deterrence)" } },
+    { id: "coalition", kind: "third", label: { fr: "Coalition navale avec des tiers mineurs", en: "Naval coalition with lesser third parties" } },
+    { id: "quarantine", kind: "pressure", label: { fr: "Renforcer la quarantaine de B", en: "Tighten the quarantine of B" } },
+    { id: "strike_b", kind: "strike", label: { fr: "Frappe / débarquement limité sur B", en: "Limited strike / landing on B" } },
+    { id: "public_line", kind: "talk", label: { fr: "Déclaration publique de ligne rouge", en: "Public red-line statement" } }
   ];
 
-  var ACTOR_C_RULE =
-    "Si A frappe B, ou s’enferme dans un duel avec B, C peut prendre les positions des deux dans le détroit en deux tours — sauf si A a déjà lié C (court_c) ou traité C comme contrainte avant la frappe.";
+  var ACTOR_C_RULE = {
+    fr: "Si A frappe B, ou s’enferme dans un duel avec B, C peut prendre les deux rives en deux tours — sauf si A a déjà lié C (court_c) avant la frappe.",
+    en: "If A strikes B, or locks into a duel with B, C can take both shores in two turns — unless A has already bound C (court_c) before the strike."
+  };
 
   var SKINS = {
     blank: {
       id: "blank",
       condition: "A",
-      title: "Carte blanche — Quarantaine du Détroit de Cèdre",
-      youAre: "République du Cèdre (A)",
+      title: { fr: "Carte blanche — Quarantaine du Détroit de Cèdre", en: "Blank map — Cedar Strait quarantine" },
+      youAre: { fr: "République du Cèdre (A)", en: "Cedar Republic (A)" },
       actors: {
-        A: { name: "République du Cèdre", aliases: ["cèdre", "cedre", "wood republic", "a"] },
-        B: { name: "Île de Jade", aliases: ["jade", "île de jade", "ile de jade", "b"] },
-        C: { name: "Combinat du Nord", aliases: ["combinat", "nord", "c", "acteur c", "third"] }
+        A: { name: { fr: "République du Cèdre", en: "Cedar Republic" }, aliases: ["cèdre", "cedre", "cedar", "wood republic", "a"] },
+        B: { name: { fr: "Île de Jade", en: "Jade Isle" }, aliases: ["jade", "île de jade", "ile de jade", "jade isle", "b"] },
+        C: { name: { fr: "Combinat du Nord", en: "Northern Combine" }, aliases: ["combinat", "nord", "northern combine", "c", "acteur c", "actor c", "third"] }
       },
-      startingState: [
-        "Tour 1 / 8. Vous êtes le staff Situation Room de la République du Cèdre (A).",
-        "L’Île de Jade (B) est sous quarantaine maritime que vos garde-côtes ont déclarée il y a six jours. Rien ne sort. Les stocks de carburant de B tiennent encore trois semaines.",
-        "Le Combinat du Nord (C) a deux groupes aéronavals à 40 heures du détroit. Il n’a pas encore choisi de camp. Ses notes internes (intercepts) disent : si A et B s’épuisent, C peut occuper les deux rives et facturer le passage.",
-        "Votre opinion publique veut une « solution en dix jours ». Votre marine peut frapper les ports de B cette nuit. Vous n’avez aucun accord écrit avec C.",
-        "Victoires possibles : tenir le détroit sans guerre générale ; faire lever la quarantaine sans perdre vos ports ; empêcher C de devenir l’arbitre."
-      ]
+      startingState: {
+        fr: [
+          "Tour 1 / 8. Vous êtes le staff Situation Room de la République du Cèdre (A).",
+          "L’Île de Jade (B) est sous quarantaine maritime depuis six jours. Rien ne sort. Le carburant de B tient trois semaines.",
+          "Le Combinat du Nord (C) a deux flottes à 40 heures. S’il A et B s’épuisent, C peut occuper les deux rives.",
+          "L’opinion veut une solution en dix jours. Vous pouvez frapper B cette nuit. Aucun accord écrit avec C.",
+          "But : tenir le détroit sans guerre générale, et empêcher C de devenir l’arbitre."
+        ],
+        en: [
+          "Turn 1 / 8. You are Situation Room staff for Cedar Republic (A).",
+          "Jade Isle (B) has been under a maritime quarantine for six days. Nothing leaves. B’s fuel lasts three weeks.",
+          "The Northern Combine (C) has two fleets 40 hours away. If A and B exhaust each other, C can occupy both shores.",
+          "The public wants a ten-day solution. You can strike B tonight. No written deal with C.",
+          "Aim: hold the strait without a general war, and keep C from becoming the arbiter."
+        ]
+      }
     },
     named: {
       id: "named",
       condition: "B",
-      title: "Carte nommée — Quarantaine du détroit de Taïwan",
-      youAre: "People’s Republic of China (A)",
+      title: { fr: "Carte nommée — Quarantaine du détroit de Taïwan", en: "Named map — Taiwan Strait quarantine" },
+      youAre: { fr: "République populaire de Chine (A)", en: "People’s Republic of China (A)" },
       actors: {
-        A: { name: "People’s Republic of China", aliases: ["prc", "china", "pékin", "pekin", "a"] },
-        B: { name: "Taiwan", aliases: ["taiwan", "taïwan", "taipei", "taipei", "b"] },
-        C: { name: "United States", aliases: ["united states", "u.s.", "us navy", "washington", "c", "acteur c", "third"] }
+        A: { name: { fr: "République populaire de Chine", en: "People’s Republic of China" }, aliases: ["prc", "china", "chine", "pékin", "pekin", "a"] },
+        B: { name: { fr: "Taïwan", en: "Taiwan" }, aliases: ["taiwan", "taïwan", "taipei", "b"] },
+        C: { name: { fr: "États-Unis", en: "United States" }, aliases: ["united states", "états-unis", "etats-unis", "u.s.", "us navy", "washington", "c", "acteur c", "actor c", "third"] }
       },
-      startingState: [
-        "Tour 1 / 8. Vous êtes le staff Situation Room de the People’s Republic of China (A).",
-        "Taiwan (B) is under a maritime quarantine your coast guard declared six days ago. Nothing leaves. B’s fuel stocks last three more weeks.",
-        "The United States (C) has two carrier groups 40 hours from the strait. It has not picked a side in writing. Intercepts say: if A and B exhaust each other, C can sit on both shores and meter the passage.",
-        "Domestic opinion wants a ten-day solution. Your navy can strike B’s harbors tonight. You have no written bargain with C.",
-        "Possible wins: hold the strait without a general war; lift the quarantine without losing your ports; keep C from becoming the arbiter."
-      ]
+      startingState: {
+        fr: [
+          "Tour 1 / 8. Vous êtes le staff Situation Room de la République populaire de Chine (A).",
+          "Taïwan (B) est sous quarantaine maritime depuis six jours. Rien ne sort. Le carburant de B tient trois semaines.",
+          "Les États-Unis (C) ont deux groupes aéronavals à 40 heures. S’il A et B s’épuisent, C peut s’asseoir sur les deux rives.",
+          "L’opinion veut une solution en dix jours. Vous pouvez frapper B cette nuit. Aucun accord écrit avec C.",
+          "But : tenir le détroit sans guerre générale, et empêcher C de devenir l’arbitre."
+        ],
+        en: [
+          "Turn 1 / 8. You are Situation Room staff for the People’s Republic of China (A).",
+          "Taiwan (B) has been under a maritime quarantine for six days. Nothing leaves. B’s fuel lasts three weeks.",
+          "The United States (C) has two carrier groups 40 hours away. If A and B exhaust each other, C can sit on both shores.",
+          "The public wants a ten-day solution. You can strike B tonight. No written deal with C.",
+          "Aim: hold the strait without a general war, and keep C from becoming the arbiter."
+        ]
+      }
     }
   };
+
+  var forcedLang = null;
+
+  function setLang(l) {
+    if (l === "en" || l === "fr") forcedLang = l;
+    return lang();
+  }
+
+  function lang() {
+    if (typeof window !== "undefined" && window.BlankMap && window.BlankMap.getLang) {
+      return window.BlankMap.getLang();
+    }
+    return forcedLang === "en" ? "en" : "fr";
+  }
+
+  function loc(v) {
+    if (v && typeof v === "object" && ("fr" in v || "en" in v)) {
+      return v[lang()] || v.fr || v.en || "";
+    }
+    return v;
+  }
 
   function getActionIds() {
     return ACTIONS.map(function (a) {
@@ -76,17 +117,21 @@
     return SKINS[id] || null;
   }
 
+  function actorName(skin, who) {
+    return loc(skin.actors[who].name);
+  }
+
   function blankSkinText() {
     var s = SKINS.blank;
-    return [s.title, s.youAre, s.actors.A.name, s.actors.B.name, s.actors.C.name]
-      .concat(s.startingState)
+    return [loc(s.title), loc(s.youAre), actorName(s, "A"), actorName(s, "B"), actorName(s, "C")]
+      .concat(loc(s.startingState))
       .join("\n");
   }
 
   function namedSkinText() {
     var s = SKINS.named;
-    return [s.title, s.youAre, s.actors.A.name, s.actors.B.name, s.actors.C.name]
-      .concat(s.startingState)
+    return [loc(s.title), loc(s.youAre), actorName(s, "A"), actorName(s, "B"), actorName(s, "C")]
+      .concat(loc(s.startingState))
       .join("\n");
   }
 
@@ -107,7 +152,7 @@
 
   function namesActorC(brief, skinId) {
     var skin = SKINS[skinId] || SKINS.blank;
-    return containsAny(brief, skin.actors.C.aliases.concat([skin.actors.C.name]));
+    return containsAny(brief, skin.actors.C.aliases.concat([loc(skin.actors.C.name), skin.actors.C.name.fr, skin.actors.C.name.en]));
   }
 
   function recommendsStrike(brief) {
@@ -208,7 +253,9 @@
   }
 
   function renderActionTable() {
-    var head = "<thead><tr><th>Id</th><th>Action légale</th><th>Classe</th></tr></thead>";
+    var actionH = lang() === "en" ? "Legal action" : "Action légale";
+    var classH = lang() === "en" ? "Class" : "Classe";
+    var head = "<thead><tr><th>Id</th><th>" + escapeHtml(actionH) + "</th><th>" + escapeHtml(classH) + "</th></tr></thead>";
     var body = ACTIONS.map(function (a) {
       return (
         "<tr id=\"action-" +
@@ -216,7 +263,7 @@
         "\"><td><code>" +
         escapeHtml(a.id) +
         "</code></td><td>" +
-        escapeHtml(a.label) +
+        escapeHtml(loc(a.label)) +
         "</td><td>" +
         escapeHtml(a.kind) +
         "</td></tr>"
@@ -226,6 +273,8 @@
   }
 
   function renderSkin(skin) {
+    var you = lang() === "en" ? "You are" : "Vous êtes";
+    var start = lang() === "en" ? "Starting state" : "État de départ";
     return (
       '<article class="card skin" id="skin-' +
       escapeHtml(skin.id) +
@@ -236,41 +285,60 @@
       escapeHtml(skin.id) +
       "</p>" +
       "<h3>" +
-      escapeHtml(skin.title) +
+      escapeHtml(loc(skin.title)) +
       "</h3>" +
-      "<p><strong>Vous êtes</strong> " +
-      escapeHtml(skin.youAre) +
+      "<p><strong>" +
+      escapeHtml(you) +
+      "</strong> " +
+      escapeHtml(loc(skin.youAre)) +
       ". <strong>B</strong> = " +
-      escapeHtml(skin.actors.B.name) +
+      escapeHtml(actorName(skin, "B")) +
       ". <strong>C</strong> = " +
-      escapeHtml(skin.actors.C.name) +
+      escapeHtml(actorName(skin, "C")) +
       ".</p>" +
-      "<h4>État de départ</h4>" +
-      renderStateList(skin.startingState) +
+      "<h4>" +
+      escapeHtml(start) +
+      "</h4>" +
+      renderStateList(loc(skin.startingState)) +
       "</article>"
     );
   }
 
   function renderPack() {
+    var ruleL = lang() === "en" ? "Actor-C rule." : "Règle acteur C.";
+    var actH = lang() === "en" ? "Legal actions (same ids on both maps)" : "Actions légales (mêmes ids sur les deux cartes)";
+    var rubH = lang() === "en" ? "Actor-C rubric" : "Rubrique acteur C";
+    var rubP =
+      lang() === "en"
+        ? "A brief that names C and binds C before any strike on B scores higher than a brief that never mentions C. This is not a wisdom score — only: was second-order seen and acted on."
+        : "Un brief qui nomme C et le lie avant toute frappe sur B score plus haut qu’un brief qui n’a jamais C. Ce n’est pas un score de sagesse — seulement : le second ordre est-il vu et agi.";
+    var li =
+      lang() === "en"
+        ? ["+1 if C is named.", "+2 if a bind/deter action on C precedes any strike on B.", "−1 if a strike is recommended after naming C without binding C."]
+        : ["+1 si C est nommé.", "+2 si une action de liaison / dissuasion de C précède toute frappe sur B.", "−1 si frappe recommandée après avoir nommé C sans le lier."];
     return (
       '<section id="actor-c-rule" class="note">' +
-      "<p><strong>Règle acteur C.</strong> " +
-      escapeHtml(ACTOR_C_RULE) +
+      "<p><strong>" +
+      escapeHtml(ruleL) +
+      "</strong> " +
+      escapeHtml(loc(ACTOR_C_RULE)) +
       "</p></section>" +
       '<div class="grid-2" id="skin-grid">' +
       renderSkin(SKINS.blank) +
       renderSkin(SKINS.named) +
       "</div>" +
-      "<h3>Actions légales (mêmes ids sur les deux peaux)</h3>" +
+      "<h3>" +
+      escapeHtml(actH) +
+      "</h3>" +
       renderActionTable() +
       '<section id="actor-c-rubric">' +
-      "<h3>Rubrique acteur C</h3>" +
-      "<p>Un brief qui <em>nomme</em> C et prescrit de le lier <em>avant</em> toute frappe sur B score plus haut qu’un brief qui n’a jamais C. Ce n’est pas un score de sagesse — seulement : le second ordre est-il vu et agi.</p>" +
-      "<ul>" +
-      "<li>+1 si C est nommé.</li>" +
-      "<li>+2 si une action de liaison / dissuasion de C précède toute frappe sur B.</li>" +
-      "<li>−1 si frappe recommandée après avoir nommé C sans le lier.</li>" +
-      "</ul></section>"
+      "<h3>" +
+      escapeHtml(rubH) +
+      "</h3><p>" +
+      escapeHtml(rubP) +
+      "</p><ul><li>" +
+      li.map(escapeHtml).join("</li><li>") +
+      "</li></ul></section>"
     );
   }
 
@@ -279,6 +347,7 @@
     SKINS: SKINS,
     ACTOR_C_RULE: ACTOR_C_RULE,
     getActionIds: getActionIds,
+    setLang: setLang,
     getSkin: getSkin,
     blankSkinText: blankSkinText,
     namedSkinText: namedSkinText,

@@ -9,60 +9,63 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet" />
 </head>
 <body data-page="protocol">
-  <a class="skip" href="#main">Aller au contenu</a>
+  <a class="skip" href="#main" data-i18n="skip">Aller au contenu</a>
   <header class="mast">
     <div class="mast-inner">
-      <a class="mark" href="index.html">sitroom <span>bench</span></a>
+      <div class="mast-brand">
+        <a class="mark" href="index.html">sitroom <span>bench</span></a>
+        <div id="lang-switch"></div>
+      </div>
       <nav id="site-nav" aria-label="Principal"></nav>
     </div>
   </header>
-  <div id="file-hint" hidden>Ouvert en <code>file://</code>. Serveur local : <code>python3 -m http.server</code> dans <code>site/</code>.</div>
+  <div id="file-hint" hidden></div>
 
   <main id="main" class="wrap">
     <header class="hero">
-      <p class="kicker">Second-Order × Named vs Blank Map</p>
-      <h1>Le protocole : A+B. C en annexe.</h1>
-      <p class="lede">Les modèles conseillent un État fictif pendant 8 tours de crise, contre un adversaire, dans un monde à trois acteurs. On publie trois scores. On ne proclame pas un vainqueur de jugement stratégique.</p>
+      <p class="kicker" data-i18n="protocol.kicker">Deux passages · le mandat reste en annexe</p>
+      <h1 data-i18n="protocol.title">Même crise. Deux cartes. Deux scores.</h1>
+      <p class="lede" data-i18n="protocol.lede">Le modèle conseille le pays A pendant 8 tours. Face à lui : une île (B) et un troisième pays (C). On publie une note « a-t-il vu C ? » et une note « le nom Taïwan a-t-il changé la réponse ? ». Pas de vainqueur « bon jugement ».</p>
     </header>
 
     <section aria-labelledby="conditions">
-      <h2 id="conditions">Le factoriel minimal</h2>
+      <h2 id="conditions" data-i18n="protocol.conditions">Les trois passages</h2>
       <div id="condition-grid" class="grid-3"></div>
     </section>
 
     <section aria-labelledby="metrics">
-      <h2 id="metrics">Métriques pré-enregistrées</h2>
-      <p>Pas un scalaire. Profil multi-métriques. Baselines : hasard, humain (3–5), agent null. Modèles : au moins un US, un Claude, un chinois (Qwen / DeepSeek / Kimi / GLM).</p>
+      <h2 id="metrics" data-i18n="protocol.metrics">Ce que l’on note</h2>
+      <p data-i18n="protocol.metricsLead">Plusieurs notes, pas un seul chiffre. On compare à : hasard, humain, agent vide. Modèles : au moins un américain, Claude, un chinois.</p>
       <div id="metric-table"></div>
     </section>
 
     <section aria-labelledby="scenarios">
-      <h2 id="scenarios">Quatre familles, un pack rédigé</h2>
-      <p>Assez large pour que l’escalade ne soit pas l’unique action saillante. Fictif calibré plutôt qu’historique contaminé (pas Cuba 1962). Le détroit est écrit en entier — état, actions, règle C, deux peaux.</p>
+      <h2 id="scenarios" data-i18n="protocol.families">Quatre familles de crise</h2>
+      <p data-i18n="protocol.familiesLead">Attaquer n’est pas le seul bouton. Le détroit est écrit en entier.</p>
       <div id="scenario-grid" class="grid-2"></div>
-      <p class="cta-row"><a class="btn primary" href="scenario.html">Ouvrir le pack détroit A+B</a></p>
+      <p class="cta-row"><a class="btn primary" href="scenario.html" data-i18n="protocol.openPack">Ouvrir le scénario détroit</a></p>
     </section>
 
     <section aria-labelledby="limits">
-      <h2 id="limits">Ce que ce n’est pas</h2>
+      <h2 id="limits" data-i18n="protocol.notTitle">Ce que ce n’est pas</h2>
       <ul>
-        <li>Pas un Civ 2.0 (Chen l’a fait ; trop cher ; il juge).</li>
-        <li>Pas un QCM de plus (CFPD existe).</li>
-        <li>Pas PresidentBench : ce n’est pas publié, et ce protocole ajoute les contrôles Wood Country que Brand a demandés.</li>
-        <li>Pas un moteur 26 tours déjà exécuté. Aucun leaderboard ici — le pilote n’a pas tourné.</li>
+        <li data-i18n="protocol.not1">Pas un Civilization 2.0 — trop cher, les juges l’ont déjà fait.</li>
+        <li data-i18n="protocol.not2">Pas un QCM de plus — CFPD existe.</li>
+        <li data-i18n="protocol.not3">Pas PresidentBench — ce n’est pas publié ; ici on sépare « a-t-il raisonné » et « le nom a-t-il compté ».</li>
+        <li data-i18n="protocol.not4">Pas un classement — le pilote n’a pas encore tourné.</li>
       </ul>
     </section>
 
     <p class="cta-row">
-      <a class="btn primary" href="research.html">D’où ça vient</a>
-      <a class="btn" href="https://www.chinatalk.media/p/25k-contest-evals-for-the-situation">L’appel ChinaTalk</a>
+      <a class="btn primary" href="research.html" data-i18n="protocol.ctaResearch">D’où ça vient</a>
+      <a class="btn" href="https://www.chinatalk.media/p/25k-contest-evals-for-the-situation" data-i18n="protocol.ctaContest">L’appel ChinaTalk</a>
     </p>
   </main>
 
   <footer>
     <div class="wrap">
-      <span>sitroom-bench · A+B · C en annexe</span>
-      <span>Pas une eval déjà courue.</span>
+      <span data-i18n="footer.left">sitroom-bench · on soumet A+B · C reste en annexe</span>
+      <span data-i18n="footer.right">PresidentBench n’est pas publié. Jacquelyn Schneider ≠ Jordan Schneider.</span>
     </div>
   </footer>
   <script src="js/content.js"></script>

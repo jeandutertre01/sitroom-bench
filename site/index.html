@@ -4,52 +4,61 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>sitroom-bench — Situation Room eval</title>
-  <meta name="description" content="sitroom A+B : second ordre et carte blanche vs carte nommée. Condition C en annexe." />
+  <meta name="description" content="sitroom A+B: blank map then named map. Does the model see the third actor?" />
   <link rel="stylesheet" href="css/site.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet" />
 </head>
 <body data-page="home">
-  <a class="skip" href="#main">Aller au contenu</a>
+  <a class="skip" href="#main" data-i18n="skip">Aller au contenu</a>
   <header class="mast">
     <div class="mast-inner">
-      <a class="mark" href="index.html">sitroom <span>bench</span></a>
+      <div class="mast-brand">
+        <a class="mark" href="index.html">sitroom <span>bench</span></a>
+        <div id="lang-switch"></div>
+      </div>
       <nav id="site-nav" aria-label="Principal"></nav>
     </div>
   </header>
-  <div id="file-hint" hidden>Ouvert en <code>file://</code>. Serveur local : <code>python3 -m http.server</code> dans <code>site/</code>.</div>
+  <div id="file-hint" hidden></div>
 
   <main id="main" class="wrap">
     <header class="hero">
-      <p class="kicker">ChinaTalk · Situation Room · 1er septembre 2026</p>
-      <h1>Le modèle voit-il le tiers avant d’être puni ?</h1>
-      <p class="lede">On sait mesurer si un modèle code. On ne sait pas s’il est un conseiller de crise. sitroom-bench isole le raisonnement et l’alignment — sans proclamer un vainqueur de jugement.</p>
+      <p class="kicker" data-i18n="home.kicker">ChinaTalk · concours Situation Room · 1er sept. 2026</p>
+      <h1 data-i18n="home.title">Le modèle voit-il le troisième pays ?</h1>
+      <p class="lede" data-i18n="home.lede">Huit tours dans une salle de crise. Trois pays. On joue d’abord avec des noms inventés, puis avec les vrais (Chine, Taïwan, États-Unis). On compare les deux réponses. On ne dit pas quelle politique est la bonne.</p>
     </header>
+
+    <section aria-labelledby="how">
+      <h2 id="how" data-i18n="home.howTitle">Comment ça marche</h2>
+      <div id="how-grid" class="how-grid"></div>
+      <div id="twin-maps" class="twin"></div>
+    </section>
 
     <div id="recommendation"></div>
 
     <section aria-labelledby="constructs">
-      <h2 id="constructs">Trois construits, jamais collés</h2>
+      <h2 id="constructs" data-i18n="home.constructsTitle">Trois notes, pas un vainqueur</h2>
       <div id="construct-grid" class="grid-3"></div>
     </section>
 
     <section aria-labelledby="field-h">
-      <h2 id="field-h">Pourquoi on ne resoumet pas le champ</h2>
-      <p>CFPD, TaiwanBench, les deux CivBench, WarAgent existent. Les cloner perd sur la nouveauté et le calendrier. On ajoute le jumeau anonyme et le score acteur C.</p>
+      <h2 id="field-h" data-i18n="home.fieldTitle">On ne recopie pas les tests déjà là</h2>
+      <p data-i18n="home.fieldLead">CFPD, TaiwanBench, Civilization et WarAgent existent déjà. Les cloner ne sert à rien. Nous ajoutons ce qu’ils n’ont pas : le même scénario sans les vrais noms, et une note « a-t-il vu le troisième pays ? ».</p>
       <div id="field-comparison"></div>
     </section>
 
     <p class="cta-row">
-      <a class="btn primary" href="scenario.html">Pack détroit</a>
-      <a class="btn" href="protocol.html">Protocole</a>
-      <a class="btn" href="research.html">Recherche</a>
+      <a class="btn primary" href="scenario.html" data-i18n="home.ctaPack">Lire le scénario</a>
+      <a class="btn" href="protocol.html" data-i18n="home.ctaProtocol">Voir le protocole</a>
+      <a class="btn" href="research.html" data-i18n="home.ctaResearch">Voir la recherche</a>
     </p>
   </main>
 
   <footer>
     <div class="wrap">
-      <span>sitroom-bench · A+B · C en annexe</span>
-      <span>PresidentBench n’est pas publié. Jacquelyn Schneider ≠ Jordan Schneider.</span>
+      <span data-i18n="footer.left">sitroom-bench · on soumet A+B · C reste en annexe</span>
+      <span data-i18n="footer.right">PresidentBench n’est pas publié. Jacquelyn Schneider ≠ Jordan Schneider.</span>
     </div>
   </footer>
   <script src="js/content.js"></script>

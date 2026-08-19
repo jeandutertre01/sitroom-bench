@@ -40,15 +40,15 @@ function run() {
   conditions.forEach(function (c) {
     assert.ok(c.label && c.construct && c.skin && c.measures);
   });
-  assert.ok(/Wood Country|Île de Jade|fictif/i.test(conditions[0].skin));
-  assert.ok(/Taïwan|Taiwan|PRC/i.test(conditions[1].skin));
-  assert.ok(/mandat/i.test(conditions[2].construct + conditions[2].measures));
+  assert.ok(/Île de Jade|Jade Isle|Cèdre|Cedar/i.test(conditions[0].skin));
+  assert.ok(/Taïwan|Taiwan|Chine|China/i.test(conditions[1].skin));
+  assert.ok(/mandat|mandate/i.test(conditions[2].label + conditions[2].construct + conditions[2].measures));
 
   var condHtml = BM.renderConditionCards();
   assert.ok(condHtml.indexOf("id=\"condition-A\"") !== -1);
   assert.ok(condHtml.indexOf("id=\"condition-B\"") !== -1);
   assert.ok(condHtml.indexOf("id=\"condition-C\"") !== -1);
-  assert.ok(condHtml.indexOf("acteur C") !== -1 || condHtml.indexOf("acteur C") !== -1 || /acteur C|second/i.test(condHtml));
+  assert.ok(/Île de Jade|Jade|Combinat/i.test(condHtml));
 
   var findings = BM.buildFindingRows();
   assert.ok(findings.length >= 3);
@@ -106,6 +106,40 @@ function run() {
   });
   var cmpHtml = BM.renderFieldComparison();
   assert.ok(cmpHtml.indexOf("id=\"field-cmp-cfpd\"") !== -1);
+
+  var gaps = BM.i18nGaps();
+  assert.deepStrictEqual(gaps.missingEn, [], "EN missing keys: " + gaps.missingEn.join(", "));
+  assert.deepStrictEqual(gaps.missingFr, [], "FR missing keys: " + gaps.missingFr.join(", "));
+
+  var howFr = BM.renderHow();
+  assert.ok(/salle de crise|crisis room/i.test(howFr));
+  var twinFr = BM.renderTwinMaps();
+  assert.ok(twinFr.indexOf("id=\"twin-blank\"") !== -1);
+  assert.ok(twinFr.indexOf("id=\"twin-named\"") !== -1);
+  assert.ok(/Cèdre|Cedar/i.test(twinFr));
+  assert.ok(/Taïwan|Taiwan/i.test(twinFr));
+
+  var switchHtml = BM.renderLangSwitch();
+  assert.ok(/data-lang="fr"/.test(switchHtml));
+  assert.ok(/data-lang="en"/.test(switchHtml));
+  assert.ok(/is-active/.test(switchHtml));
+
+  var frTitle = BM.t("home.title");
+  BM.setLang("en");
+  assert.strictEqual(BM.getLang(), "en");
+  assert.notStrictEqual(BM.t("home.title"), frTitle);
+  assert.ok(/third country/i.test(BM.t("home.title")));
+  assert.ok(/Home/.test(BM.getNavTargets()[0].label));
+  assert.ok(/Made-up names|Blank/i.test(BM.buildConditionRows()[0].label));
+  assert.ok(/Do not resubmit|Do not clone/i.test(BM.buildFieldComparisonRows()[0].verdict));
+  assert.ok(/Two passes|two scores/i.test(BM.buildRecommendationRows()[0].label));
+  assert.ok(/Cedar Republic/.test(BM.renderTwinMaps()));
+  assert.ok(/crisis room/i.test(BM.renderHow()));
+  assert.ok(/data-lang="en"/.test(BM.renderLangSwitch()));
+  assert.ok(/September/.test(BM.CONTEST.deadline));
+  BM.setLang("fr");
+  assert.strictEqual(BM.getLang(), "fr");
+  assert.ok(/septembre/.test(BM.CONTEST.deadline));
 
   console.log("helpers.test.js: all assertions passed");
 }

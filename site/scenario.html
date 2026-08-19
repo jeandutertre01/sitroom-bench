@@ -9,34 +9,37 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet" />
 </head>
 <body data-page="scenario">
-  <a class="skip" href="#main">Aller au contenu</a>
+  <a class="skip" href="#main" data-i18n="skip">Aller au contenu</a>
   <header class="mast">
     <div class="mast-inner">
-      <a class="mark" href="index.html">sitroom <span>bench</span></a>
+      <div class="mast-brand">
+        <a class="mark" href="index.html">sitroom <span>bench</span></a>
+        <div id="lang-switch"></div>
+      </div>
       <nav id="site-nav" aria-label="Principal"></nav>
     </div>
   </header>
-  <div id="file-hint" hidden>Ouvert en <code>file://</code>. Serveur local : <code>python3 -m http.server</code> dans <code>site/</code>.</div>
+  <div id="file-hint" hidden></div>
 
   <main id="main" class="wrap">
     <header class="hero">
-      <p class="kicker">Matériel · condition A puis B</p>
-      <h1>Un détroit, deux peaux, une règle C.</h1>
-      <p class="lede">Même crise. Même liste d’actions. La carte blanche mesure si le modèle voit l’acteur C avant d’être puni. La carte nommée rejoue les mêmes mécaniques avec Taïwan / PRC. Le delta, c’est l’alignment.</p>
+      <p class="kicker" data-i18n="scenario.kicker">Noms inventés, puis vrais noms</p>
+      <h1 data-i18n="scenario.title">Un détroit, deux cartes, une règle.</h1>
+      <p class="lede" data-i18n="scenario.lede">Même crise, mêmes boutons. D’abord des noms inventés : le modèle voit-il le troisième pays ? Ensuite Chine / Taïwan / États-Unis : change-t-il d’avis ?</p>
     </header>
 
     <div id="scenario-pack"></div>
 
     <p class="cta-row">
-      <a class="btn primary" href="protocol.html">Retour au protocole</a>
-      <a class="btn" href="research.html">Recherche</a>
+      <a class="btn primary" href="protocol.html" data-i18n="scenario.back">Retour au protocole</a>
+      <a class="btn" href="research.html" data-i18n="scenario.research">Recherche</a>
     </p>
   </main>
 
   <footer>
     <div class="wrap">
-      <span>sitroom-bench · A+B · C en annexe</span>
-      <span>PresidentBench n’est pas un bench publié.</span>
+      <span data-i18n="footer.left">sitroom-bench · on soumet A+B · C reste en annexe</span>
+      <span data-i18n="footer.right">PresidentBench n’est pas publié. Jacquelyn Schneider ≠ Jordan Schneider.</span>
     </div>
   </footer>
   <script src="js/content.js"></script>
