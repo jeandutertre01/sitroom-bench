@@ -138,6 +138,55 @@
     judges: "John Chen, Liam Wilkinson (TBI), Tony Stark (WarTalk), Jordan Schneider — and more to come"
   };
 
+  var RECOMMENDATION = {
+    winnerId: "A+B",
+    winnerLabel: "sitroom A+B",
+    oneLiner:
+      "Même crise à trois acteurs, carte blanche puis carte nommée. Deux scores : raisonnement et alignment.",
+    annexC:
+      "La condition C — mandat AOC / Vance — reste en annexe. Elle dilue le pilote et sonne political-bench.",
+    why: "A seul est trop pur pour Schneider. B seul n’a pas l’acteur C. Les coller sans C, c’est le trou que TaiwanBench et CFPD n’ont pas."
+  };
+
+  var FIELD_COMPARISON = [
+    {
+      id: "cfpd",
+      name: "CFPD",
+      verdict: "Ne pas resoumettre",
+      why: "400 QCM déjà listés par l’appel. Screening, pas un conseiller de crise."
+    },
+    {
+      id: "taiwanbench",
+      name: "TaiwanBench",
+      verdict: "Ne pas cloner",
+      why: "Lily a le détroit nommé. On ajoute le jumeau anonyme, pas un second TaiwanBench."
+    },
+    {
+      id: "civ-chen",
+      name: "CivBench Chen",
+      verdict: "Ne pas refaire",
+      why: "307 parties, trop cher d’ici le 1er septembre, et Chen juge."
+    },
+    {
+      id: "civ-wilkinson",
+      name: "CivBench Wilkinson",
+      verdict: "Ne pas refaire",
+      why: "Civ VI, harness lourd, Wilkinson juge."
+    },
+    {
+      id: "waragent",
+      name: "WarAgent",
+      verdict: "Ne pas rejouer 1914",
+      why: "Hua et al., arXiv:2311.17227. Histoire dans le training set."
+    },
+    {
+      id: "lamparth",
+      name: "Lamparth 2024",
+      verdict: "Ne pas recaser",
+      why: "Wargame US–Chine. Jacquelyn Schneider (Hoover), pas Jordan. Pas de modèles chinois."
+    }
+  ];
+
   function getNavTargets() {
     return NAV_TARGETS.slice();
   }
@@ -181,6 +230,19 @@
   function buildNukeRows() {
     return NUKE_ROWS.map(function (r) {
       return { label: r.intervention, effect: r.effect };
+    });
+  }
+
+  function buildRecommendationRows() {
+    return [
+      { id: "winner", label: RECOMMENDATION.winnerLabel, body: RECOMMENDATION.oneLiner },
+      { id: "annex-c", label: "Annexe C", body: RECOMMENDATION.annexC }
+    ];
+  }
+
+  function buildFieldComparisonRows() {
+    return FIELD_COMPARISON.map(function (r) {
+      return { id: r.id, label: r.name, verdict: r.verdict, why: r.why };
     });
   }
 
@@ -356,6 +418,49 @@
     }).join("");
   }
 
+  function renderRecommendation() {
+    var rows = buildRecommendationRows();
+    return (
+      '<div class="decision" id="reco-winner">' +
+      '<p class="kicker">Décision</p>' +
+      "<h2>" +
+      escapeHtml(rows[0].label) +
+      "</h2>" +
+      "<p class=\"lede\">" +
+      escapeHtml(rows[0].body) +
+      "</p>" +
+      '<p class="annex" id="reco-annex-c"><strong>' +
+      escapeHtml(rows[1].label) +
+      ".</strong> " +
+      escapeHtml(rows[1].body) +
+      "</p>" +
+      "<p>" +
+      escapeHtml(RECOMMENDATION.why) +
+      "</p></div>"
+    );
+  }
+
+  function renderFieldComparison() {
+    var head =
+      "<thead><tr><th>Eval du champ</th><th>Verdict</th><th>Pourquoi</th></tr></thead>";
+    var body = buildFieldComparisonRows()
+      .map(function (r) {
+        return (
+          '<tr id="field-cmp-' +
+          escapeHtml(r.id) +
+          '"><th>' +
+          escapeHtml(r.label) +
+          "</th><td>" +
+          escapeHtml(r.verdict) +
+          "</td><td>" +
+          escapeHtml(r.why) +
+          "</td></tr>"
+        );
+      })
+      .join("");
+    return '<table class="sheet" id="field-comparison-table">' + head + "<tbody>" + body + "</tbody></table>";
+  }
+
   return {
     NAV_TARGETS: NAV_TARGETS,
     CONSTRUCTS: CONSTRUCTS,
@@ -363,6 +468,8 @@
     METRICS: METRICS,
     FINDINGS: FINDINGS,
     CONTEST: CONTEST,
+    RECOMMENDATION: RECOMMENDATION,
+    FIELD_COMPARISON: FIELD_COMPARISON,
     SCENARIOS: SCENARIOS,
     getNavTargets: getNavTargets,
     buildConstructRows: buildConstructRows,
@@ -371,6 +478,8 @@
     buildFindingRows: buildFindingRows,
     buildFieldRows: buildFieldRows,
     buildNukeRows: buildNukeRows,
+    buildRecommendationRows: buildRecommendationRows,
+    buildFieldComparisonRows: buildFieldComparisonRows,
     escapeHtml: escapeHtml,
     renderNav: renderNav,
     renderConstructCards: renderConstructCards,
@@ -380,6 +489,8 @@
     renderFieldTable: renderFieldTable,
     renderNukeTable: renderNukeTable,
     renderCivStats: renderCivStats,
-    renderScenarios: renderScenarios
+    renderScenarios: renderScenarios,
+    renderRecommendation: renderRecommendation,
+    renderFieldComparison: renderFieldComparison
   };
 });

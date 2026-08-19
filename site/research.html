@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Recherche — Blank Map</title>
+  <title>Recherche — sitroom-bench</title>
   <link rel="stylesheet" href="css/site.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet" />
 </head>
 <body data-page="research">
   <a class="skip" href="#main">Aller au contenu</a>
   <header class="mast">
     <div class="mast-inner">
-      <a class="mark" href="index.html">Blank <span>Map</span></a>
+      <a class="mark" href="index.html">sitroom <span>bench</span></a>
       <nav id="site-nav" aria-label="Principal"></nav>
     </div>
   </header>
-  <div id="file-hint" hidden>Ouvert en <code>file://</code>. Pour un serveur local : <code>python3 -m http.server</code> dans <code>site/</code>.</div>
+  <div id="file-hint" hidden>Ouvert en <code>file://</code>. Serveur local : <code>python3 -m http.server</code> dans <code>site/</code>.</div>
 
   <main id="main" class="wrap">
     <header class="hero">
@@ -25,6 +25,8 @@
       <p class="lede">Synthèse de l’épisode ChinaTalk (11 août 2026), des papers de John Chen, et de l’appel 25 k$. Chaque chiffre ci-dessous a été recoupé. Les overclaims du premier jet ont été retirés.</p>
       <p class="meta">Concours : deadline 1er septembre 2026 · juges annoncés Chen, Wilkinson, Tony Stark, Jordan Schneider — and more to come.</p>
     </header>
+
+    <div id="recommendation"></div>
 
     <section aria-labelledby="learnings">
       <h2 id="learnings">Trois apprentissages qui tiennent</h2>
@@ -44,6 +46,11 @@
       <div id="nuke-table"></div>
     </section>
 
+    <section aria-labelledby="field-h">
+      <h2 id="field-h">Pourquoi on ne resoumet pas le champ</h2>
+      <div id="field-comparison"></div>
+    </section>
+
     <section aria-labelledby="field">
       <h2 id="field">Le champ, sans fausse équivalence</h2>
       <p>ChinaTalk ne crée pas le champ (WarAgent, CFPD, Diplomacy existent). Il le finance et le recadre. PresidentBench est un prototype décrit à l’antenne — pas un bench publié, aucun N.</p>
@@ -57,7 +64,10 @@
   </main>
 
   <footer>
-    <div class="wrap">Sources : Chen et al. CivBench arXiv:2604.07733 ; To Nuke or Not to Nuke arXiv:2606.08310. Jacquelyn Schneider (Hoover) ≠ Jordan Schneider (ChinaTalk).</div>
+    <div class="wrap">
+      <span>sitroom-bench · A+B · C en annexe</span>
+      <span>Jacquelyn Schneider (Hoover) ≠ Jordan Schneider. CivBench Chen = Civ V.</span>
+    </div>
   </footer>
   <script src="js/content.js"></script>
   <script src="js/nav.js"></script>

@@ -1,13 +1,12 @@
 :root {
-  --ink: #14120e;
-  --paper: #f3ecdc;
-  --paper-2: #e7dcc4;
-  --rule: #2a261e;
-  --muted: #6a6254;
-  --rust: #b85a2a;
-  --rust-2: #8c3f1c;
-  --card: #fffaf0;
-  --max: 72rem;
+  --ink: #161513;
+  --muted: #6b675f;
+  --line: #e6e1d6;
+  --paper: #f4f1ea;
+  --surface: #fffcf6;
+  --accent: #8f3a22;
+  --max: 68rem;
+  --space: 1.25rem;
 }
 
 * { box-sizing: border-box; }
@@ -16,29 +15,34 @@ body {
   margin: 0;
   color: var(--ink);
   background: var(--paper);
-  font-family: "IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 1.05rem;
-  line-height: 1.55;
+  font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  font-feature-settings: "ss01" on, "kern" on;
 }
 
-a { color: var(--rust-2); }
-a:hover { color: var(--rust); }
+a { color: var(--ink); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--accent); }
 
 .skip {
   position: absolute;
   left: -999px;
 }
-.skip:focus { left: 1rem; top: 1rem; background: #fff; padding: 0.4rem; }
+.skip:focus {
+  left: var(--space);
+  top: var(--space);
+  background: var(--surface);
+  padding: 0.4rem 0.6rem;
+}
 
 .mast {
-  border-bottom: 1px solid var(--rule);
-  background: var(--ink);
-  color: var(--paper);
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
 }
 .mast-inner {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 1rem 1.25rem;
+  padding: 1.15rem var(--space);
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -46,61 +50,76 @@ a:hover { color: var(--rust); }
   flex-wrap: wrap;
 }
 .mark {
-  font-family: "Newsreader", "Iowan Old Style", Palatino, Georgia, serif;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  font-family: Newsreader, "Iowan Old Style", Palatino, Georgia, serif;
+  font-weight: 560;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--paper);
+  color: var(--ink);
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.82rem;
 }
-.mark span { color: var(--rust); }
+.mark span { color: var(--accent); }
 
-#site-nav { display: flex; gap: 1.25rem; }
+#site-nav { display: flex; gap: 1.4rem; }
 .nav-link {
-  color: var(--paper-2);
+  color: var(--muted);
   text-decoration: none;
-  font-size: 0.92rem;
-  border-bottom: 1px solid transparent;
-  padding-bottom: 0.1rem;
+  font-size: 0.84rem;
+  letter-spacing: 0.02em;
 }
 .nav-link:hover,
 .nav-link.is-active {
-  color: #fff;
-  border-bottom-color: var(--rust);
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 5px;
 }
 
 #file-hint {
-  background: #3d2a12;
-  color: var(--paper);
-  padding: 0.55rem 1.25rem;
-  font-size: 0.88rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  padding: 0.55rem var(--space);
+  font-size: 0.82rem;
+  text-align: center;
 }
 
-.wrap { max-width: var(--max); margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 3.2rem var(--space) 5rem;
+}
 
-.hero h1,
-h1, h2, h3 {
-  font-family: "Newsreader", "Iowan Old Style", Palatino, Georgia, serif;
-  font-weight: 560;
-  letter-spacing: -0.015em;
-  line-height: 1.18;
+h1, h2, h3, h4 {
+  font-family: Newsreader, "Iowan Old Style", Palatino, Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--ink);
 }
 .hero {
-  padding: 1rem 0 2rem;
-  border-bottom: 1px solid var(--rule);
-  margin-bottom: 2rem;
+  padding: 0.5rem 0 2.6rem;
+  margin-bottom: 0.5rem;
 }
 .kicker {
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 0.72rem;
-  color: var(--rust);
-  margin: 0 0 0.6rem;
+  letter-spacing: 0.16em;
+  font-size: 0.68rem;
+  color: var(--accent);
+  margin: 0 0 0.85rem;
+  font-family: Inter, sans-serif;
+  font-weight: 500;
 }
-.hero h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); margin: 0 0 0.8rem; max-width: 18ch; }
-.lede { font-size: 1.2rem; max-width: 46rem; }
-.meta { color: var(--muted); font-size: 0.92rem; }
+.hero h1 {
+  font-size: clamp(2.35rem, 5.4vw, 3.7rem);
+  margin: 0 0 1rem;
+  max-width: 14ch;
+}
+.lede {
+  font-size: 1.18rem;
+  max-width: 38rem;
+  color: var(--ink);
+  margin: 0 0 0.8rem;
+}
+.meta { color: var(--muted); font-size: 0.9rem; max-width: 40rem; }
 
 .grid-3, .grid-2, .stats, .scenario-grid {
   display: grid;
@@ -108,44 +127,53 @@ h1, h2, h3 {
 }
 .grid-3 { grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
 .grid-2 { grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); }
-.stats { grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); margin: 1.25rem 0 2rem; }
+.stats {
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  margin: 1.5rem 0 2.2rem;
+  gap: 1.4rem;
+}
 
 .card, .finding {
-  background: var(--card);
-  border: 1px solid #d9cdae;
-  padding: 1.1rem 1.15rem 1.2rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 1.2rem 1.2rem 1.3rem;
 }
-.card h3, .finding h3 { margin: 0.15rem 0 0.5rem; font-size: 1.25rem; }
-.muted { color: var(--muted); font-size: 0.92rem; }
+.card h3, .finding h3 {
+  margin: 0.1rem 0 0.45rem;
+  font-size: 1.22rem;
+}
+.muted { color: var(--muted); font-size: 0.9rem; }
 
-.stat {
-  border-top: 2px solid var(--ink);
-  padding-top: 0.4rem;
+.stat { border-top: 1px solid var(--ink); padding-top: 0.5rem; }
+.stat-value {
+  display: block;
+  font-family: Newsreader, Georgia, serif;
+  font-size: 1.5rem;
 }
-.stat-value { display: block; font-family: "Newsreader", Georgia, serif; font-size: 1.45rem; }
-.stat-label { display: block; color: var(--muted); font-size: 0.8rem; }
+.stat-label { display: block; color: var(--muted); font-size: 0.75rem; }
 
 .sheet {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.95rem;
-  background: var(--card);
-  margin: 0.5rem 0 2rem;
+  font-size: 0.92rem;
+  margin: 0.4rem 0 2rem;
 }
 .sheet th, .sheet td {
-  border-bottom: 1px solid #d9cdae;
+  border-bottom: 1px solid var(--line);
   text-align: left;
-  padding: 0.65rem 0.7rem;
+  padding: 0.75rem 0.15rem 0.75rem 0;
   vertical-align: top;
 }
 .sheet thead th {
-  font-size: 0.75rem;
+  font-size: 0.68rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   color: var(--muted);
+  font-weight: 500;
+  font-family: Inter, sans-serif;
 }
 
-.cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.4rem; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.6rem; }
 .btn {
   display: inline-block;
   padding: 0.55rem 0.95rem;
@@ -153,31 +181,44 @@ h1, h2, h3 {
   text-decoration: none;
   color: var(--ink);
   background: transparent;
+  font-size: 0.88rem;
+  letter-spacing: 0.01em;
 }
 .btn.primary { background: var(--ink); color: var(--paper); }
+.btn.primary:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
 
-section { margin: 2.2rem 0; }
-section > h2 { font-size: 1.7rem; margin-bottom: 0.7rem; }
+section { margin: 2.8rem 0; }
+section > h2 { font-size: 1.65rem; margin: 0 0 0.85rem; }
 
 .note {
-  border-left: 3px solid var(--rust);
-  padding: 0.2rem 0 0.2rem 1rem;
-  max-width: 46rem;
+  border-left: 2px solid var(--ink);
+  padding: 0.15rem 0 0.15rem 1rem;
+  max-width: 40rem;
 }
+
+.decision {
+  padding: 2rem 0 2.2rem;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin: 2rem 0 2.4rem;
+}
+.decision h2 { font-size: clamp(1.8rem, 3vw, 2.3rem); margin: 0 0 0.7rem; max-width: 18ch; }
+.decision .annex { color: var(--muted); max-width: 38rem; }
+
+.state-list { margin: 0.4rem 0 0; padding-left: 1.15rem; }
+.skin h4 { margin: 1rem 0 0.35rem; font-size: 0.92rem; font-family: Inter, sans-serif; font-weight: 500; letter-spacing: 0; }
+#actor-c-rubric ul { max-width: 40rem; }
 
 footer {
-  border-top: 1px solid var(--rule);
-  padding: 1.4rem 1.25rem 2.4rem;
+  border-top: 1px solid var(--line);
+  padding: 1.6rem var(--space) 2.6rem;
   color: var(--muted);
-  font-size: 0.88rem;
+  font-size: 0.8rem;
 }
-footer .wrap { padding: 0; }
-
-.state-list { margin: 0.4rem 0 0; padding-left: 1.2rem; }
-.skin h4 { margin: 1rem 0 0.35rem; font-size: 0.95rem; }
-#actor-c-rubric ul { max-width: 46rem; }
+footer .wrap { padding: 0; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 
 @media (max-width: 640px) {
   .hero h1 { max-width: none; }
   .sheet { display: block; overflow-x: auto; }
+  .mast-inner { padding: 0.95rem var(--space); }
 }

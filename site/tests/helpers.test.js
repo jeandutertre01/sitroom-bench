@@ -85,6 +85,28 @@ function run() {
   assert.strictEqual(BM.escapeHtml("<x>"), "&lt;x&gt;");
   assert.ok(BM.CONTEST.deadline.indexOf("septembre") !== -1);
 
+  var reco = BM.buildRecommendationRows();
+  assert.ok(reco.length >= 2);
+  assert.strictEqual(reco[0].id, "winner");
+  assert.ok(/A\+B/.test(reco[0].label + reco[0].body));
+  assert.strictEqual(reco[1].id, "annex-c");
+  assert.ok(/annexe|mandat/i.test(reco[1].label + reco[1].body));
+  var recoHtml = BM.renderRecommendation();
+  assert.ok(recoHtml.indexOf("id=\"reco-winner\"") !== -1);
+  assert.ok(recoHtml.indexOf("id=\"reco-annex-c\"") !== -1);
+
+  var cmp = BM.buildFieldComparisonRows();
+  var names = cmp.map(function (r) { return r.label; }).join(" ");
+  assert.ok(/CFPD/.test(names));
+  assert.ok(/TaiwanBench/.test(names));
+  assert.ok(/CivBench Chen/.test(names));
+  assert.ok(/WarAgent|Wilkinson/.test(names));
+  cmp.forEach(function (r) {
+    assert.ok(r.id && r.label && r.verdict && r.why);
+  });
+  var cmpHtml = BM.renderFieldComparison();
+  assert.ok(cmpHtml.indexOf("id=\"field-cmp-cfpd\"") !== -1);
+
   console.log("helpers.test.js: all assertions passed");
 }
 

@@ -31,12 +31,16 @@
 
     if (page === "home") {
       fill("construct-grid", BM.renderConstructCards());
+      fill("recommendation", BM.renderRecommendation());
+      fill("field-comparison", BM.renderFieldComparison());
     }
     if (page === "research") {
       fill("finding-list", BM.renderFindingList());
       fill("civ-stats", BM.renderCivStats());
       fill("nuke-table", BM.renderNukeTable());
       fill("field-table", BM.renderFieldTable());
+      fill("recommendation", BM.renderRecommendation());
+      fill("field-comparison", BM.renderFieldComparison());
     }
     if (page === "protocol") {
       fill("condition-grid", BM.renderConditionCards());

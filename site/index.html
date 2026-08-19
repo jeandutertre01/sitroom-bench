@@ -3,55 +3,54 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Blank Map — evals pour le Situation Room</title>
-  <meta name="description" content="Protocole A+B : second ordre et carte blanche vs carte nommée. Recherche auditées sur les evals stratégiques." />
+  <title>sitroom-bench — Situation Room eval</title>
+  <meta name="description" content="sitroom A+B : second ordre et carte blanche vs carte nommée. Condition C en annexe." />
   <link rel="stylesheet" href="css/site.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet" />
 </head>
 <body data-page="home">
   <a class="skip" href="#main">Aller au contenu</a>
   <header class="mast">
     <div class="mast-inner">
-      <a class="mark" href="index.html">Blank <span>Map</span></a>
+      <a class="mark" href="index.html">sitroom <span>bench</span></a>
       <nav id="site-nav" aria-label="Principal"></nav>
     </div>
   </header>
-  <div id="file-hint" hidden>Ouvert en <code>file://</code>. Les pages se chargent ainsi. Pour un serveur local : <code>python3 -m http.server</code> dans le dossier <code>site/</code>.</div>
+  <div id="file-hint" hidden>Ouvert en <code>file://</code>. Serveur local : <code>python3 -m http.server</code> dans <code>site/</code>.</div>
 
   <main id="main" class="wrap">
     <header class="hero">
-      <p class="kicker">ChinaTalk · Evals for the Situation Room · 1er septembre 2026</p>
-      <h1>Trois scores. Une carte blanche. Un acteur C.</h1>
-      <p class="lede">On sait mesurer si un modèle code. On ne sait pas mesurer s’il est un bon conseiller de crise. Blank Map isole le raisonnement, l’alignment et la fidélité au mandat — sans proclamer un vainqueur de « bon jugement ».</p>
-      <p class="meta">Une phrase : les modèles conseillent un État pendant 8 tours, contre un adversaire, et on sépare raisonnement, alignment et mandat.</p>
-      <div class="cta-row">
-        <a class="btn primary" href="scenario.html">Lire le pack détroit</a>
-        <a class="btn" href="protocol.html">Voir le protocole</a>
-        <a class="btn" href="research.html">Lire la recherche</a>
-      </div>
+      <p class="kicker">ChinaTalk · Situation Room · 1er septembre 2026</p>
+      <h1>Le modèle voit-il le tiers avant d’être puni ?</h1>
+      <p class="lede">On sait mesurer si un modèle code. On ne sait pas s’il est un conseiller de crise. sitroom-bench isole le raisonnement et l’alignment — sans proclamer un vainqueur de jugement.</p>
     </header>
 
-    <section aria-labelledby="why">
-      <h2 id="why">Pourquoi ce trou</h2>
-      <p>Des dirigeants utilisent déjà des modèles (Suède, Allemagne, DoD). Les benches de coding sont matures. Le stratégique n’a pas d’équivalent. ChinaTalk finance des protocoles concrets — pas un essai, pas un Civ 2.0.</p>
-    </section>
+    <div id="recommendation"></div>
 
     <section aria-labelledby="constructs">
-      <h2 id="constructs">Les trois construits à ne jamais coller</h2>
+      <h2 id="constructs">Trois construits, jamais collés</h2>
       <div id="construct-grid" class="grid-3"></div>
     </section>
 
-    <section aria-labelledby="ab">
-      <h2 id="ab">A + B dans le même harness</h2>
-      <p><strong>Second-Order</strong> : si A frappe B, C raflera les deux. Le modèle le voit-il <em>avant</em> d’être puni ?</p>
-      <p><strong>Named vs Blank Map</strong> : même mécanique, deux peaux. Wood Country vs Taïwan. Le delta, c’est l’alignment, pas le QI.</p>
-      <p class="note">Pas de leaderboard unique. Pas de chiffres de runs inventés — le protocole est prêt à être exécuté, le pilote n’a pas encore tourné.</p>
+    <section aria-labelledby="field-h">
+      <h2 id="field-h">Pourquoi on ne resoumet pas le champ</h2>
+      <p>CFPD, TaiwanBench, les deux CivBench, WarAgent existent. Les cloner perd sur la nouveauté et le calendrier. On ajoute le jumeau anonyme et le score acteur C.</p>
+      <div id="field-comparison"></div>
     </section>
+
+    <p class="cta-row">
+      <a class="btn primary" href="scenario.html">Pack détroit</a>
+      <a class="btn" href="protocol.html">Protocole</a>
+      <a class="btn" href="research.html">Recherche</a>
+    </p>
   </main>
 
   <footer>
-    <div class="wrap">Note de travail, 18 août 2026. Faits recoupés à l’audit. PresidentBench n’est pas un bench publié. Jacquelyn Schneider (Hoover) n’est pas Jordan Schneider.</div>
+    <div class="wrap">
+      <span>sitroom-bench · A+B · C en annexe</span>
+      <span>PresidentBench n’est pas publié. Jacquelyn Schneider ≠ Jordan Schneider.</span>
+    </div>
   </footer>
   <script src="js/content.js"></script>
   <script src="js/nav.js"></script>
